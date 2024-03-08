@@ -176,7 +176,42 @@ while true ; do
 
 
 	elif [ $input = 2 ];then
-		echo "system"
+		while true; do
+			echo -e "\nSystem's operating system[operating system,hostname,uptime or date]\t(1)\nBack to main menu\t(9)"
+			read -p "insert your option : " option0
+			case $option0 in
+				"1")
+					while true; do
+						read -p $'\nDisplay operating system\t(op)\nDisplay hostname\t(ht)\nDisplay uptime\t(ut)\nDisplay the current date/time\t(date)\nBack to system performance menu\t(back): ' option7
+						if [ $option7 = op ];then
+							echo "..............................."
+							cat /etc/os-release
+							echo "..............................."
+						elif [ $option7 = ht ];then
+							echo "..............................."
+							hostnamectl
+							echo "..............................."
+						elif [ $option7 = ut ];then
+							echo "..............................."
+							uptime
+							echo "..............................."
+						elif [ $option7 = date ];then
+							echo "..............................."
+							date
+							echo "..............................."
+						elif [ $option7 = back ];then
+							break
+						else
+							echo -e "\nInvalid input. Please try again\n"
+						fi
+					done
+					;;
+				"9")
+					break
+					;;
+				esac
+			done
+
 
 	elif [ $input = q ];then
 		exit
