@@ -69,7 +69,7 @@ while true ; do
 
 	if [ $input = 1 ];then
 		while true; do
-			echo -e "Creat File or Dircotry\t(ct)\nCopy File or Dircotry\t(cp)\nRename File or Dirctory\t(re)\nMove File or Dirctory\t(mv)\nBack to main menu\t(9)"
+			echo -e "Creat File or Dircotry\t(ct)\nCopy File or Dircotry\t(cp)\nRename File or Dirctory\t(re)\nMove File or Dirctory\t(mv)\nDelete File or Dirctory\t(de)\nBack to main menu\t(9)"
 			read -p "insert your option : " option
 			case $option in
 				"ct")
@@ -91,6 +91,36 @@ while true ; do
 						fi
 					done
 					;;
+				"de")
+					check_path_to_creat
+					while true; do
+						read -p "to delete file (file) to delete dir (dir) back to file manger menu (back): " option6
+						if [ $option6 = file ];then
+							read -p "name of file: " fname
+							read -p "are you sure do delete "$fname" [y] press any key to ignore: " conf
+							if [ $conf = y ];then
+								rm $fname
+								break
+							else
+								break
+							fi
+						elif [ $option6 = dir ];then
+							read -p "name of dir: " dname
+							read -p "are you sure do delete "$dname" [y] press any key to ignore: " conf1
+							if [ $conf1 = y ];then
+								rm -r $dname
+								break
+							else
+								break
+							fi
+						elif [ $option6 = back ];then
+							break
+						else
+							echo -e "\nInvalid input. Please try again\n"
+						fi
+					done
+					;;
+
 				"cp")
 					while true; do
 						read -p "To copy file (file) to copy dirctory (dir) back to file manger menu (back): " option3
