@@ -177,7 +177,7 @@ while true ; do
 
 	elif [ $input = 2 ];then
 		while true; do
-			echo -e "\nSystem's operating system[operating system,hostname,uptime or date]\t(1)\nBack to main menu\t(9)"
+			echo -e "\nSystem's operating system[operating system,hostname,uptime or date]\t(1)\nMemory informations\t(2)\nBack to main menu\t(9)"
 			read -p "insert your option : " option0
 			case $option0 in
 				"1")
@@ -206,9 +206,16 @@ while true ; do
 						fi
 					done
 					;;
+				"2")
+					echo "............................................"
+					free
+					echo "............................................"
+					;;
 				"9")
 					break
 					;;
+				*)
+					echo -e "\nInvalid input. Please try again\n"
 				esac
 			done
 
