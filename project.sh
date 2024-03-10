@@ -4,7 +4,7 @@ echo -e "\n........welcom to Araby's program........\n"
 
 check_path_to_creat() {
 	while true; do
-		read -p "Enter a path: " path
+		read -p $'\nEnter a path: ' path
 		if [ -e "$path" ]; then
 			cd $path
 			break
@@ -15,9 +15,9 @@ check_path_to_creat() {
 }
 check_path_to_copy() {
 	while true; do
-		read -p "copy from: " path2
+		read -p $'\ncopy from: ' path2
 		if [ -e "$path2" ]; then
-			read -p "copy to: " path3
+			read -p $'\ncopy to: ' path3
 			if [ -e "$path3" ]; then
 				cp -r $path2 $path3
 				break
@@ -31,9 +31,9 @@ check_path_to_copy() {
 }
 check_path_to_move() {
 	while true; do
-		read -p "move from: " path2
+		read -p $'\nmove from: ' path2
 		if [ -e "$path2" ]; then
-			read -p "move to: " path3
+			read -p $'move to: ' path3
 			if [ -e "$path3" ]; then
 				mv $path2 $path3
 				break
@@ -47,12 +47,12 @@ check_path_to_move() {
 }
 check_path_to_rename() {
 	while true; do
-		read -p "path of file or dir to rename: " path4
+		read -p $'\npath of file or dir to rename: ' path4
 		if [ -e "$path4" ]; then
 			cd $path4
 			read -p "old name: " oldname
 			read -p "new name: " newname
-			read -p "are you sure to rename $oldname to $newname [y] or press anything else if you don't: " confirm
+			read -p "are you sure to rename $oldname to $newname [y] or press any key to ignore: " confirm
 			if [ $confirm = y ];then
 				mv $oldname $newname
 				break
@@ -65,105 +65,97 @@ check_path_to_rename() {
 	done
 }
 while true ; do
-	read -p "file manger (1) system performance (2) quit (q): " input
+	read -p $'File manger\t\t(1)\nSystem performance\t(2)\nQuit\t\t\t(q): ' input
 
 	if [ $input = 1 ];then
 		while true; do
-			echo -e "Creat File or Dircotry\t(ct)\nCopy File or Dircotry\t(cp)\nRename File or Dirctory\t(re)\nMove File or Dirctory\t(mv)\nDelete File or Dirctory\t(de)\nBack to main menu\t(9)"
+			echo -e "\nCreat File or Dircotry\t(1)\nCopy File or Dircotry\t(2)\nRename File or Dirctory\t(3)\nMove File or Dirctory\t(4)\nDelete File or Dirctory\t(5)\nSearch\t\t\t(6)\nBack to main menu\t(9)\n"
 			read -p "insert your option : " option
 			case $option in
-				"ct")
+				"1")
 					check_path_to_creat
 					while true; do
-						read -p "to creat file (file) to creat dir (dir) back to file manger menu (back): " option2
-						if [ $option2 = file ];then
+						read -p $'\nCreat file\t\t\t(f)\nCreat dirctory\t\t\t(d)\nBack to file manger menu\t(b): ' option2
+						if [ $option2 = f ];then
 							read -p "name of new file: " newfilename
 							touch $newfilename
 							break
-						elif [ $option2 = dir ];then
+						elif [ $option2 = d ];then
 							read -p "name of new dir: " newdirname
 							mkdir $newdirname
 							break
-						elif [ $option2 = back ];then
+						elif [ $option2 = b ];then
 							break
 						else
 							echo -e "\nInvalid input. Please try again\n"
 						fi
 					done
 					;;
-				"de")
+				"5")
 					check_path_to_creat
 					while true; do
-						read -p "to delete file (file) to delete dir (dir) back to file manger menu (back): " option6
-						if [ $option6 = file ];then
-							read -p "name of file: " fname
-							read -p "are you sure do delete "$fname" [y] press any key to ignore: " conf
+						read -p $'\nName of File or Dirctory you want to delete: ' option6
+						if [ -f $option6 ];then
+							read -p "are you sure do delete File:- "$option6" [y] press any key to ignore: " conf
 							if [ $conf = y ];then
-								rm $fname
+								rm $option6
 								break
 							else
 								break
 							fi
-						elif [ $option6 = dir ];then
-							read -p "name of dir: " dname
-							read -p "are you sure do delete "$dname" [y] press any key to ignore: " conf1
+						elif [ -d $option6 ];then
+							read -p "are you sure do delete Dirctory:- "$option6" [y] press any key to ignore: " conf1
 							if [ $conf1 = y ];then
-								rm -r $dname
+								rm -r $option6
 								break
 							else
 								break
 							fi
-						elif [ $option6 = back ];then
-							break
 						else
 							echo -e "\nInvalid input. Please try again\n"
 						fi
 					done
 					;;
 
-				"cp")
+				"2")
 					while true; do
-						read -p "To copy file (file) to copy dirctory (dir) back to file manger menu (back): " option3
-						if [ $option3 = file ];then
 							check_path_to_copy
-						elif [ $option3 = dir ];then
-							check_path_to_copy
-						elif [ $option3 = back ];then
 							break
-						else
-							echo -e "\nInvalid input. Please try again\n"
-						fi
 					done
 					;;
-				"mv")
+				"4")
 					while true; do
-						read -p "To move file (file) to move dirctory (dir) back to file manger menu (back): " option5
-						if [ $option5 = file ];then
 							check_path_to_move
-						elif [ $option5 = dir ];then
-							check_path_to_move
-						elif [ $option5 = back ];then
 							break
-						else
-							echo -e "\nInvalid input. Please try again\n"
-						fi
 					done
 					;;
 
-				"re")
+				"3")
 					while true; do
-						read -p "To rename file (file) to rename dirctory (dir) back to file manger menu (back): " option4
-						if [ $option4 = file ];then
 							check_path_to_rename
-						elif [ $option4 = dir ];then
-							check_path_to_rename
-						elif [ $option4 = back ];then
 							break
-						else
-							echo -e "\nInvalid input. Please try again\n"
-						fi
 					done
 					;;
+				"6")
+					while true; do
+						read -p $'\nsearch by time\t\t\t(1)\nsearch by name\t\t\t(2)\nsearch by size\t\t\t(3)\nsearch by type\t\t\t(4)\nBack to file manger menu\t(9): ' search
+						if [ $search = 1 ];then
+							read -p "modified time by days: " num
+							find -mtime $num
+						elif [ $search = 2 ];then
+							read -p "Insert the name: " nam
+							find -iname $nam
+						elif [ $search = 3 ];then
+							read -p "Insert the size: " siz
+							find -size $siz
+						elif [ $search = 4 ];then
+							read -p $'Insert the Type\nFiles\t\t(f)\nDirctories\t(d): ' typ
+							find -type $typ
+						elif [ $search = 9 ];then
+							break
+						fi
+					done
+						;;
 
 				"9")
 					break
@@ -177,29 +169,29 @@ while true ; do
 
 	elif [ $input = 2 ];then
 		while true; do
-			echo -e "\nSystem's operating system[operating system,hostname,uptime or date]\t(1)\nMemory informations\t(2)\nBack to main menu\t(9)"
+			echo -e "\nSystem's operating system\t(1)\nMemory informations\t\t(2)\nCPU Usage\t\t\t(3)\nBack to main menu\t\t(9)"
 			read -p "insert your option : " option0
 			case $option0 in
 				"1")
 					while true; do
-						read -p $'\nDisplay operating system\t(op)\nDisplay hostname\t(ht)\nDisplay uptime\t(ut)\nDisplay the current date/time\t(date)\nBack to system performance menu\t(back): ' option7
-						if [ $option7 = op ];then
-							echo "..............................."
+						read -p $'\nDisplay operating system\t(1)\nDisplay hostname\t\t(2)\nDisplay uptime\t\t\t(3)\nDisplay the current date/time\t(4)\nBack to system performance menu\t(9): ' option7
+						if [ $option7 = 1 ];then
+							echo -e "\n................Operating System...............\n"
 							cat /etc/os-release
-							echo "..............................."
-						elif [ $option7 = ht ];then
-							echo "..............................."
+							echo -e "\n..............................................."
+						elif [ $option7 = 2 ];then
+							echo -e "\n...............Host-Name................\n"
 							hostnamectl
-							echo "..............................."
-						elif [ $option7 = ut ];then
-							echo "..............................."
+							echo "............................................."
+						elif [ $option7 = 3 ];then
+							echo -e "\n...............Uptime................\n"
 							uptime
-							echo "..............................."
-						elif [ $option7 = date ];then
-							echo "..............................."
+							echo -e "\n....................................."
+						elif [ $option7 = 4 ];then
+							echo -e "\n.............Current Date..................\n"
 							date
-							echo "..............................."
-						elif [ $option7 = back ];then
+							echo -e "\n..........................................."
+						elif [ $option7 = 9 ];then
 							break
 						else
 							echo -e "\nInvalid input. Please try again\n"
@@ -207,9 +199,14 @@ while true ; do
 					done
 					;;
 				"2")
-					echo "............................................"
+					echo -e "\n..................Memory Usage........................"
 					free
-					echo "............................................"
+					echo "......................................................"
+					;;
+				"3")
+					echo -e "\n...............CPU Usage........................"
+					top -bn1 | awk '{print echo "\t" $9,echo "\t",$12}' | sed '1,6d' | head -11
+					echo "................................................"
 					;;
 				"9")
 					break
