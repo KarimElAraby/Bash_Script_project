@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo -e "\n........welcome to Araby's program........\n"
-
+# function to check path is exist and cd to it
 check_path_to_creat() {
 	while true; do
 		read -p $'\nEnter a path: ' path
@@ -13,6 +13,7 @@ check_path_to_creat() {
 		fi
 	done
 }
+# function to check two paths to copy from path to another
 check_path_to_copy() {
 	while true; do
 		read -p $'\ncopy from: ' path2
@@ -29,6 +30,7 @@ check_path_to_copy() {
 		fi
 	done
 }
+# function to check two paths to move from path to another
 check_path_to_move() {
 	while true; do
 		read -p $'\nmove from: ' path2
@@ -45,6 +47,7 @@ check_path_to_move() {
 		fi
 	done
 }
+# function to check path to rename Dirctory or File
 check_path_to_rename() {
 	while true; do
 		read -p $'\npath of file or dir to rename: ' path4
@@ -63,6 +66,24 @@ check_path_to_rename() {
 			echo -e "\nInvalid path. Please try again\n"
 		fi
 	done
+}
+# function to display Memory Usage
+memory() {
+        echo -e "\n..................Memory Usage........................\n"
+        free
+        echo -e "\n......................................................"
+}
+# function to display CPU Usage
+cpu() {
+        echo -e "\n...............CPU Usage........................\n"
+        top -bn1 | awk '{print echo "\t" $9,echo "\t",$12}' | sed '1,6d' | head -11
+        echo -e "\n................................................"
+}
+# function to display Disk Usage
+disk() {
+        echo -e "\n...............Disk Space........................\n"
+        df -h
+        echo -e "\n................................................."
 }
 while true ; do
 	read -p $'File manger\t\t(1)\nSystem performance\t(2)\nQuit\t\t\t(q): ' input
@@ -303,7 +324,7 @@ while true ; do
 
 	elif [ $input = 2 ];then
 		while true; do
-			echo -e "\nSystem's operating system\t(1)\nMemory informations\t\t(2)\nCPU Usage\t\t\t(3)\nDisk Space\t\t\t(4)\nBack to main menu\t\t(9)"
+			echo -e "\nSystem's operating system\t(1)\nMemory informations\t\t(2)\nCPU Usage\t\t\t(3)\nDisk Space\t\t\t(4)\nLog report\t\t\t(5)\nBack to main menu\t\t(9)"
 			read -p "insert your option : " option0
 			case $option0 in
 				"1")
@@ -335,20 +356,20 @@ while true ; do
 					done
 					;;
 				"2")
-					echo -e "\n..................Memory Usage........................\n"
-					free
-					echo "\n......................................................"
+					memory
 					;;
 				"3")
-					echo -e "\n...............CPU Usage........................\n"
-					top -bn1 | awk '{print echo "\t" $9,echo "\t",$12}' | sed '1,6d' | head -11
-					echo -e "\n................................................"
+					cpu
 					;;
 				"4")
-					echo -e "\n...............Disk Space........................\n"
-					df -h
-					echo -e "\n................................................."
+					disk
 					;;
+				"5")
+					memory > ~/log.txt
+                                        disk >> ~/log.txt
+                                        cpu >> ~/log.txt
+                                        cat ~/log.txt
+                                        ;;
 				"9")
 					break
 					;;
