@@ -66,7 +66,6 @@ check_path_to_rename() {
 }
 while true ; do
 	read -p $'File manger\t\t(1)\nSystem performance\t(2)\nQuit\t\t\t(q): ' input
-
 	if [ $input = 1 ];then
 		while true; do
 			echo -e "\nCreat File or Dircotry\t\t\t(1)\nCopy File or Dircotry\t\t\t(2)\nRename File or Dirctory\t\t\t(3)\nMove File or Dirctory\t\t\t(4)\nDelete File or Dirctory\t\t\t(5)\nSearch\t\t\t\t\t(6)\nFile Permision & change owner/group\t(7)\nBackup and restore\t\t\t(8)\nBack to main menu\t\t\t(9)\n"
@@ -75,17 +74,19 @@ while true ; do
 				"1")
 					check_path_to_creat
 					while true; do
-						read -p $'\nCreat file\t\t\t(f)\nCreat dirctory\t\t\t(d)\nBack to file manger menu\t(b): ' option2
-						if [ $option2 = f ];then
+						read -p $'\nCreat file\t\t\t(1)\nCreat dirctory\t\t\t(2)\nBack to file manger menu\t(9): ' option2
+						if [ $option2 = 1 ];then
 							read -p "name of new file: " newfilename
 							touch $newfilename
 							break
-						elif [ $option2 = d ];then
+						elif [ $option2 = 2 ];then
 							read -p "name of new dir: " newdirname
 							mkdir $newdirname
 							break
-						elif [ $option2 = b ];then
+						elif [ $option2 = 9 ];then
 							break
+						elif [[ $option2 =~ [^0-9] ]];then
+                                                	echo -e "\nPlease insert a number\n"
 						else
 							echo -e "\nInvalid input. Please try again\n"
 						fi
@@ -153,6 +154,8 @@ while true ; do
 							find -type $typ
 						elif [ $search = 9 ];then
 							break
+						elif [[ $search =~ [^0-9] ]];then
+                                                        echo -e "\nPlease insert a number\n"
 						else
 							echo -e "\nInvaild input. Please try again"
 						fi
@@ -211,6 +214,13 @@ while true ; do
 									"9")
 										break
 										;;
+									*)
+										if [[ $opt2 =~ [^0-9] ]];then
+                                                        				echo -e "\nPlease insert a number\n"
+										else
+											echo -e "\nInvaild input. Please try again\n"
+										fi
+										;;
 								esac
 							done
 						elif [ $opt = 2 ];then
@@ -239,12 +249,18 @@ while true ; do
 										break
 										;;
 									*)
-										echo -e "\n Invaild input. Please try again"
+										if [[ $opt4 =~ [^0-9] ]];then
+                                                				        echo -e "\nPlease insert a number\n"
+										else
+											echo -e "\n Invaild input. Please try again"
+										fi
 										;;
 								esac
 							done
 						elif [ $opt = 9 ];then
 							break
+						elif [[ $opt =~ [^0-9] ]];then
+                                                        echo -e "\nPlease insert a number\n"
 						else
 							echo -e "\nInvaild input. Please try again"
 						fi
@@ -263,6 +279,8 @@ while true ; do
                                                         tar -xvf $fdnm
 						elif [ $opp = 9 ];then
 							break
+						elif [[ $opp =~ [^0-9] ]];then
+                                                        echo -e "\nPlease insert a number\n"
 						else
 							echo -e "\nInvaild input. please try again"
 						fi
@@ -273,7 +291,11 @@ while true ; do
 					break
 					;;
 				*)
-					echo -e "\nInvalid input. Please try again\n"
+					if [[ $option =~ [^0-9] ]];then
+						echo -e "\nPlease insert a number\n"
+					else
+						echo -e "\nInvalid input. Please try again\n"
+					fi
 					;;
 			esac
 		done
@@ -305,6 +327,8 @@ while true ; do
 							echo -e "\n..........................................."
 						elif [ $option7 = 9 ];then
 							break
+						elif [[ $option7 =~ [^0-9] ]];then
+                                                        echo -e "\nPlease insert a number\n"
 						else
 							echo -e "\nInvalid input. Please try again\n"
 						fi
@@ -329,16 +353,23 @@ while true ; do
 					break
 					;;
 				*)
-					echo -e "\nInvalid input. Please try again\n"
+					if [[ $option0 =~ [^0-9] ]];then
+                                    	    echo -e "\nPlease insert a number\n"
+					else
+						echo -e "\nInvalid input. Please try again\n"
+					fi
+					;;
 				esac
 			done
 
 
 	elif [ $input = q ];then
 		exit
+	elif [[ $input =~ [^1-2q] ]];then
+		echo -e "\nPlease insert a number [1, 2] or q for quit\n"
 
 	else
-		echo "error input"
+		echo -e "\nInvaild input. Please try again\n"
 	fi
 
 done
