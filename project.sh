@@ -69,7 +69,7 @@ while true ; do
 
 	if [ $input = 1 ];then
 		while true; do
-			echo -e "\nCreat File or Dircotry\t(1)\nCopy File or Dircotry\t(2)\nRename File or Dirctory\t(3)\nMove File or Dirctory\t(4)\nDelete File or Dirctory\t(5)\nSearch\t\t\t(6)\nFile Permision & change owner/group\t(7)\nBackup and restore\t\t(8)\nBack to main menu\t(9)\n"
+			echo -e "\nCreat File or Dircotry\t\t\t(1)\nCopy File or Dircotry\t\t\t(2)\nRename File or Dirctory\t\t\t(3)\nMove File or Dirctory\t\t\t(4)\nDelete File or Dirctory\t\t\t(5)\nSearch\t\t\t\t\t(6)\nFile Permision & change owner/group\t(7)\nBackup and restore\t\t\t(8)\nBack to main menu\t\t\t(9)\n"
 			read -p "insert your option : " option
 			case $option in
 				"1")
@@ -153,46 +153,60 @@ while true ; do
 							find -type $typ
 						elif [ $search = 9 ];then
 							break
+						else
+							echo -e "\nInvaild input. Please try again"
 						fi
 					done
 					;;
 				"7")
 					while true; do
-						check_path_to_creat
-						ls -l 
-						read -p $'File or Dirctory name: ' name
-						read -p $'File/Dirctory permision\t(1)\nOwner and group permision\t(2)\nBack\t(9)' opt
-						if [ $opt =1 ];then
+						read -p $'File/Dirctory permision\t\t(1)\nOwner and group permision\t(2)\nBack\t\t\t\t(9): ' opt
+						if [ $opt = 1 ];then
 							while true; do
+								check_path_to_creat
+                        	        	                ls -l
+                                	        	        read -p $'File or Dirctory name: ' name
 								read -p $'User only\t(1)\nUser & Group\t(2)\nUser & Others\t(3)\nGroup only\t(4)\nGroup & Others\t(5)\nOthers only\t(6)\nAll\t\t(7)\nBack\t\t(9): ' opt2
 								case $opt2 in
 									"1")
-										read -p $'you can add with\t(+)\nremove with\t\t(-)\nRead (r) Write (w) execute (x)\n example [-xr/+x]: ' opt3
+										read -p $'you can add with\t(+)\nremove with\t\t(-)\nRead (r) Write (w) execute (x)\nExample [-xr/+x]: ' opt3
 										sudo chmod u$opt3 $name
+										break
 										;;
 									"2")
-										read -p $'you can add with\t(+)\nremove with\t\t(-)\nRead (r) Write (w) execute (x)\n example [-xr/+x]: ' opt3
-                                                                                sudo chmod u$opt3 g$pt3 $name
+										read -p $'you can add with\t(+)\nremove with\t\t(-)\nRead (r) Write (w) execute (x)\nexample [-xr/+x]: ' opt3
+                                                                                sudo chmod u$opt3 $name
+										sudo chmod g$opt3 $name
+										break
                                                                                 ;;
 									"3")
-										read -p $'you can add with\t(+)\nremove with\t\t(-)\nRead (r) Write (w) execute (x)\n example [-xr/+x]: ' opt3
-                                                                                sudo chmod u$opt3 o$opt3 $name
+										read -p $'you can add with\t(+)\nremove with\t\t(-)\nRead (r) Write (w) execute (x)\nexample [-xr/+x]: ' opt3
+                                                                                sudo chmod u$opt3 $name
+										sudo chmod o$opt3 $name
+										break
                                                                                 ;;
 									"4")
-										read -p $'you can add with\t(+)\nremove with\t\t(-)\nRead (r) Write (w) execute (x)\n example [-xr/+x]: ' opt3
+										read -p $'you can add with\t(+)\nremove with\t\t(-)\nRead (r) Write (w) execute (x)\nexample [-xr/+x]: ' opt3
                                                                                 sudo chmod g$opt3 $name
+										break
                                                                                 ;;
 									"5")
-										read -p $'you can add with\t(+)\nremove with\t\t(-)\nRead (r) Write (w) execute (x)\n example [-xr/+x]: ' opt3
-                                                                                sudo chmod g$opt3 o$opt3 $name
+										read -p $'you can add with\t(+)\nremove with\t\t(-)\nRead (r) Write (w) execute (x)\nexample [-xr/+x]: ' opt3
+                                                                                sudo chmod g$opt3 $name
+										sudo chmod o$opt3 $name
+										break
                                                                                 ;;
 									"6")
-										read -p $'you can add with\t(+)\nremove with\t\t(-)\nRead (r) Write (w) execute (x)\n example [-xr/+x]: ' opt3
+										read -p $'you can add with\t(+)\nremove with\t\t(-)\nRead (r) Write (w) execute (x)\nexample [-xr/+x]: ' opt3
                                                                                 sudo chmod o$opt3 $name
+										break
                                                                                 ;;
 									"7")
-										read -p $'you can add with\t(+)\nremove with\t\t(-)\nRead (r) Write (w) execute (x)\n example [-xr/+x]: ' opt3
-                                                                                sudo chmod u$opt3 g$opt3 o$opt3 $name
+										read -p $'you can add with\t(+)\nremove with\t\t(-)\nRead (r) Write (w) execute (x)\nexample [-xr/+x]: ' opt3
+                                                                                sudo chmod u$opt3 $name
+										sudo chmod g$opt3 $name
+										sudo chmod o$opt3 $name
+										break
                                                                                 ;;
 									"9")
 										break
@@ -201,19 +215,25 @@ while true ; do
 							done
 						elif [ $opt = 2 ];then
 							while true; do
-								read -p $'Change Owner only\t(1)\nChnage Groupe only\t(2)\nChange both\t\t(3)\nBack\t\t(9): ' opt4
+								check_path_to_creat
+                                                		ls -l
+                                               			 read -p $'File or Dirctory name: ' name
+								read -p $'Change Owner only\t(1)\nChnage Groupe only\t(2)\nChange both\t\t(3)\nBack\t\t\t(9): ' opt4
 								case $opt4 in
 									"1")
 										read -p "New User name: " nme
 										sudo chown $nme $name
+										break
 										;;
 									"2")
 										read -p "New Groupe name: " gnme
 										sudo chgrp $gnme $name
+										break
 										;;
 									"3")
 										read -p $'Insert new user name and new groupe name\n example [newuser:newgroupe] : ' both
 										sudo chown $both $name
+										break
 										;;
 									"9")
 										break
@@ -232,8 +252,20 @@ while true ; do
 					;;
 				"8")
 					while true; do
-						read -p "Insert Path for dicrotry to backup: " path4archive
-						tar -cvf $path4archive
+						read -p $'\nBackup\t(1)\nRestore\t(2)\nBack\t(9): ' opp
+						if [ $opp = 1 ];then
+							check_path_to_creat
+							read -p "Dirctory or File name: " fdname
+							tar -cvf $fdname.tar $fdname
+						elif [ $opp = 2 ];then
+							check_path_to_creat
+							read -p "Dirctory or File name: " fdnm
+                                                        tar -xvf $fdnm
+						elif [ $opp = 9 ];then
+							break
+						else
+							echo -e "\nInvaild input. please try again"
+						fi
 					done
 					;;
 
