@@ -15,8 +15,8 @@ A Bash script that monitors various aspects of a Linux system and provides real-
 
 #### System metrics
 
-1- System Information Display
-2- CPU Usage Monitoring
-3- Memory Usage Monitoring
-4- Disk Space Monitoring
-5- Logging and Reporting
+1- System Information Display.
+2- CPU Usage Monitoring.
+3- Memory Usage Monitoring.
+4- Disk Space Monitoring.
+5- Logging and Reporting.
