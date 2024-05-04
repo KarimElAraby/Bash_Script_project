@@ -11,7 +11,7 @@ The Bash script developed in this project monitors various aspects of a Linux sy
     
 a- The script presents users with an interactive menu that offers options for system monitoring and file management operations.
     
-b-The menu utilizes the select statement to display options and handle user input
+b- The menu utilizes the select statement to display options and handle user input
 
 
 ### 2- Error Handling:
