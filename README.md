@@ -73,5 +73,5 @@ Disk space usage statistics are retrieved, and information such as total disk sp
 
 ### 11- Logging and Reporting:
 
-    The script generates a summary report of system metrics and saves it to a specified location.
+The script generates a summary report of system metrics and saves it to a specified location.
 
