@@ -9,69 +9,67 @@ The Bash script developed in this project monitors various aspects of a Linux sy
 
 ### 1- Interactive Menu:
     
-    a- The script presents users with an interactive menu that offers options for system monitoring and file management operations.
+a- The script presents users with an interactive menu that offers options for system monitoring and file management operations.
     
-    b-The menu utilizes the select statement to display options and handle user input
-
-
+b-The menu utilizes the select statement to display options and handle user input
 
 
 ### 2- Error Handling:
 
-    a- The script implements error handling mechanisms to validate user input and handle exceptions gracefully.
+a- The script implements error handling mechanisms to validate user input and handle exceptions gracefully.
     
-    b- Informative error messages are provided when operations fail due to incorrect input or other issues.
+b- Informative error messages are provided when operations fail due to incorrect input or other issues.
 
 
 ### 3- File and Directory Operations:
 
-    a- Create: Allows users to create files and directories by providing the desired names and target locations.
+a- Create: Allows users to create files and directories by providing the desired names and target locations.
     
-    b- Copy: Enables users to copy files and directories to specific destinations.
+b- Copy: Enables users to copy files and directories to specific destinations.
     
-    c- Move: Allows users to move files and directories to different locations.
+c- Move: Allows users to move files and directories to different locations.
     
-    d- Rename: Provides the ability to rename files and directories. Includes confirmation prompts
+d- Rename: Provides the ability to rename files and directories. Includes confirmation prompts
     
-    e- Delete: Allows users to delete files and directories. Includes confirmation prompts to avoid accidental data loss.
+e- Delete: Allows users to delete files and directories. Includes confirmation prompts to avoid accidental data loss.
 
 
 ### 4- File Search:
 
-      Users can search for files based on specified criteria such as file name, file type, file size, and modification date.
+ Users can search for files based on specified criteria such as file name, file type, file size, and modification date.
 
 
 ### 5- Permissions Management:
 
-    a- Users can change file permissions (chmod) and ownership (chown) using the script.
+a- Users can change file permissions (chmod) and ownership (chown) using the script.
     
-    b- The script provides options to specify permission modes and user/group ownership.
+b- The script provides options to specify permission modes and user/group ownership.
 
     
 ### 6- Backup and Restore:
 
-    a- The script includes backup and restore functionalities to create backups of files and directories and restore them when needed.
+a- The script includes backup and restore functionalities to create backups of files and directories and restore them when needed.
     
-    b- The tar command is utilized for creating and extracting backups.
+b- The tar command is utilized for creating and extracting backups.
 
     
 ### 7- System Information Display:
 
-    Basic system information, including the operating system, hostname, uptime, and current date/time, is displayed.
+Basic system information, including the operating system, hostname, uptime, and current date/time, is displayed.
 
     
 ### 8- CPU Usage Monitoring:
 
-    The script retrieves CPU usage statistics and displays the current CPU usage percentage.
+The script retrieves CPU usage statistics and displays the current CPU usage percentage.
 
   
 ### 9- Memory Usage Monitoring:
 
-    Memory usage statistics are retrieved, and information such as total available memory, used memory, and free memory is displayed.
+Memory usage statistics are retrieved, and information such as total available memory, used memory, and free memory is displayed.
 
 ### 10- Disk Space Monitoring:
 
-    Disk space usage statistics are retrieved, and information such as total disk space, used space, and available space for each mounted filesystem is displayed.
+Disk space usage statistics are retrieved, and information such as total disk space, used space, and available space for each mounted filesystem is displayed.
 
 ### 11- Logging and Reporting:
 
