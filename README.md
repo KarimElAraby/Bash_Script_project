@@ -75,3 +75,16 @@ Disk space usage statistics are retrieved, and information such as total disk sp
 
 The script generates a summary report of system metrics and saves it to a specified location.
 
+## Command Line Interface ( CLI )
+
+![Screenshot from 2024-05-05 17-57-45](https://github.com/KarimElAraby/Bash_Script_project/assets/137705973/0505ab52-5bc7-49e4-870f-7b1db27b8b7b)
+![Screenshot from 2024-05-05 17-59-41](https://github.com/KarimElAraby/Bash_Script_project/assets/137705973/cd1ca5d8-8247-458f-a821-6eb6cb0068dd)
+![Screenshot from 2024-05-05 18-02-41](https://github.com/KarimElAraby/Bash_Script_project/assets/137705973/68e29a2b-b622-41eb-8fe2-0668834cb64b)
+
+## Graphical User Interface ( GUI )
+
+![Screenshot from 2024-05-05 18-00-08](https://github.com/KarimElAraby/Bash_Script_project/assets/137705973/5e74313f-3c7e-4f75-abc1-40f7ac324420)
+![Screenshot from 2024-05-05 18-00-15](https://github.com/KarimElAraby/Bash_Script_project/assets/137705973/488913a3-b7f6-47ec-b131-16757b6a5d5f)
+![Screenshot from 2024-05-05 18-00-45](https://github.com/KarimElAraby/Bash_Script_project/assets/137705973/168da2b7-874e-4e23-aef1-977bdd7d7d44)
+![Screenshot from 2024-05-05 18-01-12](https://github.com/KarimElAraby/Bash_Script_project/assets/137705973/e51567d8-ef94-4c63-b258-a1cd864a2b32)
+![Screenshot from 2024-05-05 18-01-19](https://github.com/KarimElAraby/Bash_Script_project/assets/137705973/85494a1d-4e7d-4d27-a844-b5355e8086e2)
